@@ -1,0 +1,204 @@
+def vowelmid(s):
+    v=["a","e","i","o","u"]
+    s=list(s)
+    l=len(s)
+    c=0
+    f=0
+    for i in s:
+        c=c+1
+        if(i=="a" or i=="e" or i=="i" or i=="o" or i=="u"):
+            f=1
+            loc=c
+            break
+    if(f==1):
+        for i in range (0,c-1):
+            s[i]=chr(ord(s[i])-1)
+        lv=v.index(s[c-1])
+        s[c-1]=v[(lv+1)%5]
+        for i in range (c,l):
+            s[i]=chr(ord(s[i])+1)
+    else:
+        for i in range (0,l):
+            s[i]=chr(ord(s[i])-1)        
+    st=""
+    for i in range (l):
+        st=st+s[i]
+    print(st,end=" ")
+        
+def rev(s):
+    str=""
+   for i in s:
+        str=i+str    
+    return str
+###########################
+def spl(s):
+    l=[]
+    c=0
+    start=0
+    for i in s:
+        c=c+1
+        if(i==" "):
+            end=c
+            l.append(s[start:end-1])
+            start=c
+    c=0
+    start=0
+    s1=rev(s)
+    for i in s1:
+        c=c+1
+        if(i==" "):
+            end=c
+            l.append(rev(s1[start:end-1]))
+            break
+    return l
+#####################################
+a=input("enter string => ")
+print(rev(a))
+###################################
+def revword(s):
+    a=spl(s)
+    l=len(a)
+    for i in range (l):
+        a[i]=rev(a[i])
+        st=""
+        for j in range (l):
+            st=st+" "+a[j]
+    print(st,end=" ")
+    print()
+revword(a)
+#####################################
+def startendcap(s):
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        j[0]=chr(ord(j[0])-32)
+        j[l-1]=chr(ord(j[l-1])-32)
+        st=""
+        for i in range (l):
+            st=st+j[i]
+        print(st,end=" ")
+startendcap(a)
+######################################
+def startendatrate(s):
+    print()
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        j[0]="@"
+        j[l-1]="#"
+        st=""
+        for i in range (l):
+            st=st+j[i]
+        print(st,end=" ")
+startendatrate(a)
+######################################
+def secondnum(s):
+    print()
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        for k in range (l):
+            if(k%2!=0):
+                j[k]=str((k+1)%8)
+        st=""
+        for k in range (l):
+            st=st+j[k]
+        print(st,end=" ")
+secondnum(a)
+####################################
+def alphaone(s):
+    print()
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        for k in range (l):
+            if(k%2!=0):
+                j[k]=chr(ord(j[k])+1)
+        st=""
+        for k in range (l):
+            st=st+j[k]
+        print(st,end=" ")
+alphaone(a)
+####################################
+def capvow(s):
+    print()
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        for k in range (l):
+            if(j[k]=="a" or j[k]=="e" or j[k]=="i" or j[k]=="o" or j[k]=="u"):
+                j[k]=chr(ord(j[k])-32)
+        st=""
+        for k in range (l):
+            st=st+j[k]
+        print(st,end=" ")
+capvow(a)
+####################################
+def swaptwo(s):
+    print()
+    a=spl(s)
+    for i in a:
+        l=len(i)
+        j=list(i)
+        if(l%2==0):
+            for k in range (0,l,2):
+                swap=""
+                swap=j[k]
+                j[k]=j[k+1]
+                j[k+1]=swap
+        else:
+            for k in range (0,l-1,2):
+                swap=""
+                swap=j[k]
+                j[k]=j[k+1]
+                j[k+1]=swap
+        st=""
+        for k in range (l):
+            st=st+j[k]
+        print(st,end=" ")
+swaptwo(a)
+####################################
+def vowone(s):
+    print()
+    a=spl(s)
+    v=["a","e","i","o","u"]
+    for i in a:
+        l=len(i)
+        j=list(i)
+        for k in range (l):
+            if(j[k]=="a" or j[k]=="e" or j[k]=="i" or j[k]=="o" or j[k]=="u"):
+                   loc=v.index(j[k])
+                   j[k]=v[(loc+1)%5]
+        st=""
+        for k in range (l):
+            st=st+j[k]
+        print(st,end=" ")
+vowone(a)
+####################################
+def plusminus(s):
+    print()
+    a=spl(s)
+    v=["a","e","i","o","u"]
+    for i in a:
+        vowplusmin.vowelmid(i)
+plusminus(a)
+#####################################
+def minlen(s):
+    print()
+    a=spl(s)
+    minl=len(a[0])
+    for i in a:
+        if(len(i)<minl):
+            minl=len(i)
+    c=0
+    for i in range (minl):
+        for j in a:
+            print (j[i],end="")
+        print("",end=" ")
+        c=c+1
+minlen(a)
